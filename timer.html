@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Christmas Countdown</title>
+		<style type="text/css">
+		body {
+			background: #f6f6f6;
+		}
+
+		.countdownContainer{
+			position: absolute;;
+			top: 50%;
+			left: 50%;
+			transform : translateX(-50%) translateY(-50%);
+			text-align: center;
+			background: #696969;
+			border: 1px solid #999;
+			padding: 10px;
+			box-shadow: 0 0 5px 3px #ccc;
+		}
+
+		.info {
+			font-size: 80px;
+			font-family: sans-serif;
+		}
+		</style>
+	</head>
+	<body>
+		<table class="countdownContainer" style="border-radius: 60px;">
+			<tr class="info">
+				<td colspan="9" style="color: white ; font-family: Comic Sans MS">Christmas Countdown</td>
+			</tr>
+			<tr >
+			<td style="height: 20px"></td>
+
+				
+			</tr>
+			<tr class="info">
+				<td style=" width : 80px ;"></td>
+				<td id="days" style=" width : 100px ; background: #FFF;box-shadow: 0 0 5px 3px #C0C0C0; border-radius: 25px;font-family: Farnham"><b></b>120</td>
+				<td style="color: white ; "><b>:</b></td>
+				<td id="hours" style="width : 100px ; background: #FFF;box-shadow: 0 0 5px 3px #C0C0C0;border-radius: 25px; font-family: Farnham"><b></b>4</td>
+				<td style="color: white ; "><b>:</b></td>
+				<td id="minutes" style="width : 100px ; background: #FFF;box-shadow: 0 0 5px 3px #C0C0C0;border-radius: 25px;font-family: Farnham"><b></b>12</td>
+				<td style="color: white ; "><b>:</b></td>
+				<td id="seconds" style="width : 100px ; background: #FFF;box-shadow: 0 0 5px 3px #C0C0C0;border-radius: 25px;font-family: Farnham"><b></b>22</td>
+				<td style=" width : 80px ;"></td>
+			</tr>
+			<tr style="color: white ; font-family: Comic Sans MS">
+				<td></td>
+				<td>Days</td>
+				<td></td>
+				<td>Hours</td>
+				<td></td>
+				<td>Minutes</td>
+				<td></td>
+				<td>Seconds</td>
+				<td></td>
+			</tr>
+		</table>
+		<script type="text/javascript">
+
+			function countdown(){
+				var now = new Date();
+				var eventDate = new Date(2016, 11, 25);
+
+				var currentTiime = now.getTime();
+				var eventTime = eventDate.getTime();
+
+				var remTime = eventTime - currentTiime;
+
+				var s = Math.floor(remTime / 1000);
+				var m = Math.floor(s / 60);
+				var h = Math.floor(m / 60);
+				var d = Math.floor(h / 24);
+
+				h %= 24;
+				m %= 60;
+				s %= 60;
+
+				h = (h < 10) ? "0" + h : h;
+				m = (m < 10) ? "0" + m : m;
+				s = (s < 10) ? "0" + s : s;
+
+				document.getElementById("days").textContent = d;
+				document.getElementById("days").innerText = d;
+
+				document.getElementById("hours").textContent = h;
+				document.getElementById("minutes").textContent = m;
+				document.getElementById("seconds").textContent = s;
+
+				setTimeout(countdown, 1000);
+			}
+
+			countdown();
+		</script>
+	<img src="giphy1.gif" style="position: absolute;right:0;bottom:0; width: 200px ;height: 200px">
+	</body>
+</html>
