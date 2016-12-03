@@ -1,0 +1,151 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>A simplified pacman game</title>
+	</head>
+	<body>
+	<p>"This is a simple pacman game."<br>
+	# To move the pacman use the up down keys.<br>
+	# To eat make sure that the food is exactly in the centre of the pacman.<br>
+	</p>
+	
+	<script src="processing.js"></script>
+	<script type="application/processing" data-processing-target="pjs">
+
+	var end= 4.53786;
+	var start = 4.88692; 
+
+	float ballX = 50;
+	float ballY = 50;
+
+	float speed = 5;
+	//array which is incharge of food
+	var arr=[
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1],
+		
+			[1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+
+	];
+	void setup(){
+	 size(500, 500); 
+	}
+	//50 border;
+
+	void draw(){
+	background(0);
+	var x=50;
+	var y=50;
+	//printing food
+	while(y<450){
+		x=50;
+		while(x<450){
+			if(arr[(x-50)/20][(y-50)/20]==1)
+			ellipse(x, y, 5, 5);
+			x+=20;
+		}
+		y+=20;
+	}
+
+	 //  y=100;
+	 // while(y<400){
+	 // 	if(arr[(y-100)/20]==1)
+	 // 	ellipse(y, 250, 10, 10);
+	 // 	y+=20;
+	 // }
+
+	arc(ballX,ballY,20,20,start,end);
+	 //ellipse(ballX, ballY, 20,20);
+
+	} 
+
+	void keyPressed(KeyEvent e){
+	 if(key == CODED){
+	  if(keyCode == UP&&ballY>50){
+		end= 10.821;
+		start = 4.88692;
+		ballY -= speed;
+		var x=50;
+		var y=50;
+		while(y<450){
+			x=50;
+			while(x<450){
+				if(ballY==y&&ballX==x&&arr[(x-50)/20][(y-50)/20]==1)
+				arr[(x-50)/20][(y-50)/20]=0;
+				x+=20;
+			}
+			y+=20;
+	}
+		}
+		  else if(keyCode == DOWN&&ballY<450){
+		start=1.74533 ; 
+		end=7.67945;
+		   ballY += speed; 
+		 ar x=50;
+		var y=50;
+		while(y<450){
+			x=50;
+			while(x<450){
+				if(ballY==y&&ballX==x&&arr[(x-50)/20][(y-50)/20]==1)
+				arr[(x-50)/20][(y-50)/20]=0;
+				x+=20;
+			}
+			y+=20;
+		}
+		  }
+		  else if(keyCode == LEFT&&ballX>50){
+		end =9.25025;
+		start = 3.31613;    
+		ballX -= speed;
+		ar x=50;
+		var y=50;
+		while(y<450){
+			x=50;
+			while(x<450){
+				if(ballY==y&&ballX==x&&arr[(x-50)/20][(y-50)/20]==1)
+				arr[(x-50)/20][(y-50)/20]=0;
+				x+=20;
+			}
+			y+=20;
+		}
+		  }
+		  else if(keyCode == RIGHT&&ballX<450){
+		start = 0.174533;
+		end =6.10865 ;
+		ballX += speed;
+		ar x=50;
+		var y=50;
+		while(y<450){
+			x=50;
+			while(x<450){
+				if(ballY==y&&ballX==x&&arr[(x-50)/20][(y-50)/20]==1)
+				arr[(x-50)/20][(y-50)/20]=0;
+				x+=20;
+			}
+			y+=20;
+		} 
+		  }
+		 } 
+		};
+		</script>
+		<canvas id="pjs"> </canvas>
+
+		</body>
+		</html>
